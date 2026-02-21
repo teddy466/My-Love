@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For My Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Video Background */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+
+    /* Dark overlay for readability */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 10, 30, 0.55);
+      z-index: -1;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: absolute;
+      top: 0;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    nav ul li:hover {
+      opacity: 0.7;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* Hero Content */
+    .hero {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 600px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .glow {
+      text-shadow: 0 0 15px rgba(150, 200, 255, 0.8);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        background: rgba(0,0,0,0.7);
+        position: absolute;
+        top: 60px;
+        right: 40px;
+        padding: 15px;
+        border-radius: 8px;
+        display: none;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      nav .logo {
+        font-size: 1.2rem;
+      }
+      /* Fade-in animation */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  animation: floatIn 2.5s ease forwards;
+}
+
+.hero p {
+  opacity: 0;
+  animation: floatIn 3s ease forwards;
+  animation-delay: 1s;
+}
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Video Background -->
+  <video class="video-bg" autoplay muted loop>
+    <source src="Pictures/From KlickPin CF jellyfish aquarium aesthetic _ สัตว์ในท้องทะเล ทิวทัศน์ พื้นหลัง.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="overlay"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Us</div>
+    <div class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li>Home</li>
+      <li><a href="memories.html">Her</a></li>
+      <li><a href="letters 2.html">Letters</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="hero">
+    <h1 class="glow">I Love You So Much Bby</h1>
+    <p>
+      I know this might not be much tho, I just tried
+      my best to find a way to show how much I love you,
+      even while having classes, so yeah I made this for you —
+      to remind you that I will always love you, Forever.
+    </p>
+  </section>
+
+</body>
+</html>

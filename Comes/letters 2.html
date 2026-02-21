@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Letters</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: url(my-little-pony-fluttershy-4fr8e8ogi0bydfbg.webp) center/cover no-repeat;
+  color: #2a1a10;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAVIGATION */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo { font-weight: 600; font-size: 1.2rem; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #2a1a10;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.nav-links a:hover { color: #ff4f81; }
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+p{
+  color: black;
+  font-weight: bold;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #2a1a10;
+  transition: 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* CONTAINER & GRID */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 150px 20px 50px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.letter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 80px;
+}
+
+.letter-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.letter-card:hover { transform: translateY(-5px); }
+
+.letter-card h3 { margin-top: 10px; font-size: 1.1rem; }
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  border-radius: 16px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.modal.active .modal-content { transform: scale(1); }
+
+.close-btn {
+  text-align: right;
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.open { 
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .container { padding: 130px 15px 40px; }
+
+  h1 { font-size: 1.6rem; margin-bottom: 30px; }
+
+  .letter-card { padding: 15px; }
+
+  .modal-content { width: 90%; padding: 18px; }
+}
+
+@media (max-width: 480px) {
+  .letter-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.4rem; }
+  .letter-card h3 { font-size: 1rem; }
+ 
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Us</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="love.html">Home</a></li>
+    <li><a href="memories.html">Her</a></li>
+    <li><a href="#">Letters</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <h1> 💌 To My Baby 💌</h1>
+  <div class="letter-grid">
+    <div class="letter-card" onclick="openLetter()">
+      <span>LETTER 01</span>
+      <h3>How Much I love You</h3>
+    </div>
+    <div class="letter-card" onclick="openLetter2()">
+      <span>LETTER 02</span>
+      <h3>How Much I love Spending Time With You</h3>
+    </div>
+    <div class="letter-card" onclick="openLetter3()">
+      <span>LETTER 03</span>
+      <h3>What I Really Hope For</h3>
+    </div>
+    <!-- Add more letters here -->
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="close-btn" onclick="closeLetter()">Close ✕</div>
+    <h2 id="modal-title"></h2>
+    <p id="modal-text"></p>
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  document.querySelector(".nav-links").classList.toggle("open");
+  document.querySelector(".hamburger").classList.toggle("active");
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.querySelector(".nav-links").classList.remove("open");
+    document.querySelector(".hamburger").classList.remove("active");
+  });
+});
+
+function openLetter() {
+  document.getElementById("modal-text").innerText = "To be honest I don't even know how to describe it, But One things for sure I really do and I always will.";
+  document.getElementById("modal").classList.add("active");
+}
+function openLetter2() {
+  document.getElementById("modal-text").innerText = "∞, Didnt see any other was to describe it, I just really Love every minute I spend together with you";
+  document.getElementById("modal").classList.add("active");
+}
+function openLetter3() {
+  document.getElementById("modal-text").innerText = "Actually its just to be with you till the end❤️, Couldnt hope for anything more.";
+  document.getElementById("modal").classList.add("active");
+}
+
+function closeLetter() {
+  document.getElementById("modal").classList.remove("active");
+}
+</script>
+<br>
+
+<footer><p>SO yeah this is the end, I'm sorry it doesnt look very proffesional, but I gave it my best, And i hope You would love it </p></footer>
+
+</body>
+</html>
